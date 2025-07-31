@@ -17,7 +17,7 @@ public class JoeAnimatorAndMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         rb.gravityScale = 0; // Disable gravity for top-down games
-    }
+    } 
 
     void Update()
     {
