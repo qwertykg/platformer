@@ -25,15 +25,14 @@ public class JoeMovement : MonoBehaviour
         // Get raw input and normalize it
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
-        // Animate based on input, not velocity
         bool isMoving = moveInput != Vector2.zero;
-        animator.SetBool("isMoving", isMoving);
+        animator.SetBool("IsMoving", isMoving);
 
-        // Flip sprite based on horizontal input
-        if (moveInput.x < 0)
-            spriteRenderer.flipX = true;
-        else if (moveInput.x > 0)
-            spriteRenderer.flipX = false;
+        // Set directional animation parameters
+        animator.SetBool("GoingLeft", isMoving && moveInput.x < 0);
+        animator.SetBool("GoingRight", isMoving && moveInput.x > 0);
+        animator.SetBool("GoingUp", isMoving && moveInput.y > 0);
+        animator.SetBool("GoingDown", isMoving && moveInput.y < 0);
     }
 
     void FixedUpdate()
